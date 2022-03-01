@@ -1,19 +1,32 @@
 const container = document.getElementById("container");
-let rows = document.getElementsByClassName("gridRow");
-let cells = document.getElementsByClassName("cell");
+
+(function() {
+    console.log('IIFE invoked');
+    defaultGrid();
+})();
 
 // Skapar en grid 16x16
 function defaultGrid() {
-    makeRows(16);
-    makeColumns(16);
-    console.log('hej');    
-    document.getElementsByClassName('grid-item').addEventListener('mouseover', function() {
-         document.getElementsClassName(("grid-item").classList.add("mouse-hover"));
+    console.log('defaultgrid function');    
+
+    makeRows(16, 16);
+    // makeColumns(16);
+
+    let gridItems = [...document.getElementsByClassName('grid-item')];
+    console.log('griditems:', gridItems);
+    gridItems.forEach(gridItem => {
+        gridItem.addEventListener('mouseover', function (e) {
+            console.log('grid item hovered:', e.target);
+            e.target.classList.add('mouse-hover');
         });
+    });
+    // gridItems.addEventListener('mouseover', function() {
+    //      document.getElementsClassName("grid-item").classList.add("mouse-hover");
+    //     });
             
-        document.getElementsClassName(("grid-item").addEventListener("mouseout"), function() {
-        document.getElementsClassName(("grid-item").classList.remove("mouse-hover"));
-       });
+    //     document.getElementsClassName("grid-item").addEventListener("mouseout"), function() {
+    //     document.getElementsClassName("grid-item").classList.remove("mouse-hover");
+    //    };
 }
 
 // Tar rows & Cols och skapar en grid
@@ -26,16 +39,16 @@ function makeRows(rows, cols) {
       container.appendChild(cell).className = "grid-item";
     };
   };
-  makeRows(16, 16);
+//   makeRows(16, 16);
 
 // Skapar kolumner
-function makeColumns(cellNum) {
-    for (i = 0; i < rows.length; i++) {
-        for (j = 0; j < cellNum; j++) {
-            let newCell = document.createElement("div");
-            rows[j].appendChild(newCell).className = "cell";
-        };
-    }; //Jag vill ändra färg på "grid-item?". Hur gör jag det enklast? Ändra class? Göra en background-color change?
+// function makeColumns(cellNum) {
+//     for (i = 0; i < rows.length; i++) {
+//         for (j = 0; j < cellNum; j++) {
+//             let newCell = document.createElement("div");
+//             rows[j].appendChild(newCell).className = "cell";
+//         };
+//     }; //Jag vill ändra färg på "grid-item?". Hur gör jag det enklast? Ändra class? Göra en background-color change?
     
-};
+// };
 

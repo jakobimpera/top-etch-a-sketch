@@ -1,5 +1,5 @@
 const container = document.getElementById("container");
-const slider = document.getElementById("sizeRange");
+const slider = document.getElementById("rangeSlider");
 
 (function () {
     console.log('IIFE invoked');
@@ -43,12 +43,7 @@ function resetGrid() {
     });
 }
 
-function setSize() {
-    
-}
 // Sätter storleken på Container till en fast storlek
 document.getElementById('container').style.height ="400px";
 document.getElementById('container').style.width ="600px";
 document.getElementById('container').style.borderRadius="200px";
-
-

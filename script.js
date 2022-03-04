@@ -1,5 +1,5 @@
 const container = document.getElementById("container");
-const slider = document.getElementById("rangeSlider");
+const slider = document.getElementById("range-slider");
 
 (function () {
     console.log('IIFE invoked');
@@ -11,11 +11,15 @@ const slider = document.getElementById("rangeSlider");
 // Skapar en grid 16x16
 
 function defaultGrid() {
-    console.log('defaultgrid function');
 
-    makeRows(64, 64);
+   makeRows(16, 16);
 
     let gridItems = [...document.getElementsByClassName('grid-item')];
+    bindGrid(gridItems);
+   
+};
+
+function bindGrid(gridItems){
     gridItems.forEach(gridItem => {
         gridItem.addEventListener('mouseover', function (e) {
             e.target.classList.add('mouseHover');
@@ -23,6 +27,12 @@ function defaultGrid() {
         });
     });
 }
+
+// Jag vill koppla slidern till makeRows så jag kan bestämma antalet rows som skapas.
+function rowSum(){
+    
+    addEventListener.onclick.slider.value;
+};
 
 // Tar rows & Cols och skapar en grid
 function makeRows(rows, cols) {
@@ -33,17 +43,18 @@ function makeRows(rows, cols) {
         //cell.innerText = (c + 1);
         container.appendChild(cell).className = "grid-item";
     };
+    let gridItems = [...document.getElementsByClassName('grid-item')];
+    bindGrid(gridItems);
 };
 
 //Reset grid - med knapp - samt kunna förändra storlek på grid utan att påverka totala antal pixlar. 
 function resetGrid() {
-    let grid = document.querySelectorAll('.mouseHover');
-    grid.forEach(mouseHover => {
-        mouseHover.classList.remove('mouseHover');
-    });
+    container.innerHTML = '';
+    makeRows(slider.value, slider.value);
+    console.log(slider.value);
 }
 
 // Sätter storleken på Container till en fast storlek
 document.getElementById('container').style.height ="400px";
 document.getElementById('container').style.width ="600px";
-document.getElementById('container').style.borderRadius="200px";
+// document.getElementById('container').style.borderRadius="200px";

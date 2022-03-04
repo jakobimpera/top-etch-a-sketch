@@ -8,13 +8,17 @@
     /*grid-gap: 1em;*/
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
+    margin: 120px;
   }
   
   .grid-item {
-    background-color: green;
+    background-color: yellow;
   }
 
   .mouseHover{
       background-color: lightblue;
 }
 
+#reset-button {
+  margin: 30px;
+}
